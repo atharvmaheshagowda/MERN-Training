@@ -1,0 +1,177 @@
+Microsoft Windows [Version 10.0.26200.9278]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+fatal: not a git repository (or any of the parent directories): .git
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git init
+Initialized empty Git repository in C:/Users/Atharv mahesha gowda/Desktop/Projects/Internships/EcoTrace AI/.git/
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Bulk Waste Generator Book.pdf
+        C&D_rules_2025.pdf
+        HOWM-Sixth-Amendment-Rules-2022.pdf
+        PWM_Gazette.pdf
+        SWM_2026.pdf
+        e-waste_rules_2022.pdf
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git add .
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Bulk Waste Generator Book.pdf
+        new file:   C&D_rules_2025.pdf
+        new file:   HOWM-Sixth-Amendment-Rules-2022.pdf
+        new file:   PWM_Gazette.pdf
+        new file:   SWM_2026.pdf
+        new file:   e-waste_rules_2022.pdf
+
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Bulk Waste Generator Book.pdf
+        new file:   C&D_rules_2025.pdf
+        new file:   HOWM-Sixth-Amendment-Rules-2022.pdf
+        new file:   PWM_Gazette.pdf
+        new file:   SWM_2026.pdf
+        new file:   e-waste_rules_2022.pdf
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Bulk Waste Generator Book.pdf
+
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git add .
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git commit -m "this is pdf data"
+[master (root-commit) 096b6ad] this is pdf data
+ 6 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Bulk Waste Generator Book.pdf
+ create mode 100644 C&D_rules_2025.pdf
+ create mode 100644 HOWM-Sixth-Amendment-Rules-2022.pdf
+ create mode 100644 PWM_Gazette.pdf
+ create mode 100644 SWM_2026.pdf
+ create mode 100644 e-waste_rules_2022.pdf
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Bulk Waste Generator Book.pdf
+        deleted:    C&D_rules_2025.pdf
+        deleted:    HOWM-Sixth-Amendment-Rules-2022.pdf
+        deleted:    PWM_Gazette.pdf
+        deleted:    SWM_2026.pdf
+        deleted:    e-waste_rules_2022.pdf
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        data/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git add .
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    Bulk Waste Generator Book.pdf -> data/policies/Bulk Waste Generator Book.pdf
+        renamed:    C&D_rules_2025.pdf -> data/policies/C&D_rules_2025.pdf
+        renamed:    HOWM-Sixth-Amendment-Rules-2022.pdf -> data/policies/HOWM-Sixth-Amendment-Rules-2022.pdf
+        renamed:    PWM_Gazette.pdf -> data/policies/PWM_Gazette.pdf
+        renamed:    SWM_2026.pdf -> data/policies/SWM_2026.pdf
+        renamed:    e-waste_rules_2022.pdf -> data/policies/e-waste_rules_2022.pdf
+
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git commit -m "this is pdf data"
+[master 9748278] this is pdf data
+ 6 files changed, 0 insertions(+), 0 deletions(-)
+ rename Bulk Waste Generator Book.pdf => data/policies/Bulk Waste Generator Book.pdf (100%)
+ rename C&D_rules_2025.pdf => data/policies/C&D_rules_2025.pdf (100%)
+ rename HOWM-Sixth-Amendment-Rules-2022.pdf => data/policies/HOWM-Sixth-Amendment-Rules-2022.pdf (100%)
+ rename PWM_Gazette.pdf => data/policies/PWM_Gazette.pdf (100%)
+ rename SWM_2026.pdf => data/policies/SWM_2026.pdf (100%)
+ rename e-waste_rules_2022.pdf => data/policies/e-waste_rules_2022.pdf (100%)
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git remote add origin https://github.com/atharvmaheshagowda/EcoTrace-AI.git
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git remote show origin
+* remote origin
+  Fetch URL: https://github.com/atharvmaheshagowda/EcoTrace-AI.git
+  Push  URL: https://github.com/atharvmaheshagowda/EcoTrace-AI.git
+  HEAD branch: (unknown)
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git push -u origin master
+remote: Permission to atharvmaheshagowda/EcoTrace-AI.git denied to amg-3006.
+fatal: unable to access 'https://github.com/atharvmaheshagowda/EcoTrace-AI.git/': The requested URL returned error: 403
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git push -u origin master
+info: please complete authentication in your browser...
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (11/11), 8.88 MiB | 962.00 KiB/s, done.
+Total 11 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/atharvmaheshagowda/EcoTrace-AI.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   data/policies/Bulk Waste Generator Book.pdf
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git add .
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git commit -m "this is pdf data"
+[master 926e252] this is pdf data
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>git push -u origin master
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 588 bytes | 294.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/atharvmaheshagowda/EcoTrace-AI.git
+   9748278..926e252  master -> master
+branch 'master' set up to track 'origin/master'.
+
+C:\Users\Atharv mahesha gowda\Desktop\Projects\Internships\EcoTrace AI>
