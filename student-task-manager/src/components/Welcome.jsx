@@ -1,7 +1,9 @@
-function Welcome() 
-{
-  return (
-    <h1>Welcome to the Student Task Manager</h1>
-  );
+function Welcome() {
+    return (
+        <section className="welcome">
+            <h1>Welcome back, Student!</h1>
+        </section>
+    );
 }
+
 export default Welcome;
