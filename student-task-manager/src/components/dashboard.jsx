@@ -1,6 +1,7 @@
 import StatCard from "./StatCard";
 import TaskList from "./Tasklist";
 import { useState } from "react";
+import AddTask from "./AddTask";
 function Dashboard() {
   const [tasks, setTasks] = useState([
     {id:1,title: "Learn React", description: "Understanding Components", status: "In Progress"},
@@ -17,6 +18,11 @@ function Dashboard() {
         return task;
       })
     );
+  
+  }
+  function addTask(newTask)
+  {
+    setTasks([...tasks,newTask]);
   }
   return (
     <main>
@@ -27,6 +33,7 @@ function Dashboard() {
         <StatCard title={"Time Taken"} value={"2 hours"} />
 
       </div>
+      <AddTask onAddTask={addTask}/>
       <h2>Recent Tasks</h2>
       <div className="task-container">
         {tasks.map((task) => (
