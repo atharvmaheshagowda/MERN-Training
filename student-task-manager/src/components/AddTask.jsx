@@ -9,7 +9,7 @@ function AddTask (props){
       id:Date.now(),
       title:title,
       description:desc,
-      status:"pending"
+      status:"To Do"
     };
     console.log("Object:",newTask);
     props.onAddTask(newTask);

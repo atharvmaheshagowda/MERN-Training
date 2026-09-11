@@ -5,6 +5,7 @@ function TaskList(props) {
             <p>{props.description}</p>
             <p> {props.status}</p>
             <button onClick={props.onToggle}>Toggle Status</button>
+            <button onClick={props.onDelete}>Delete</button>
         </div>
     );
 }
