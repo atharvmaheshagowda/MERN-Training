@@ -4,6 +4,7 @@ function AddTask (props){
   const [desc,setDesc] = useState("");
   function handleSubmit(e){
     e.preventDefault();
+    if (!title.trim()) return;
     console.log("Form Submitted!");
     const newTask ={
       id:Date.now(),
@@ -13,6 +14,8 @@ function AddTask (props){
     };
     console.log("Object:",newTask);
     props.onAddTask(newTask);
+    setTitle("");
+    setDesc("");
   }
   return (
     <div>
