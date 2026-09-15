@@ -5,14 +5,16 @@ import { Routes,Route } from 'react-router-dom';
 import Tasks from './components/Tasks';
 import TaskDetails from './components/TaskDetails';
 import "./App.css"
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 function App()
 {
-  const [tasks, setTasks] = useState([
-    {id:1,title: "Learn React", description: "Understanding Components", status: "In Progress"},
-    {id:2,title: "Learn MongoDB", description: "Create a simple React app", status: "To Do"}, 
-    {id:3,title: "Deploy App", description: "Host the app on a platform", status: "Completed"}
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+        useEffect(()=>{
+        fetch("http://localhost:5000/api/tasks").then((response)=>response.json()).then((data)=>{setTasks(data)});
+      }, []);
+
+
   return (
     <div>
       <Navbar />
