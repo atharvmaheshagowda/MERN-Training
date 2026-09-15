@@ -42,7 +42,6 @@ function Dashboard(props) {
         <StatCard title={"Total Tasks"} value={totalTasks} /> 
         <StatCard title={"Completed Tasks"} value={completedTasks} /> 
         <StatCard title={"Pending Tasks"} value={pendingTasks} /> 
-        <StatCard title={"Time Taken"} value={"2 hours"} /> 
       </div> 
       
       <AddTask onAddTask={addTask}/> 

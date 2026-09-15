@@ -2,7 +2,7 @@ import { useState } from "react";
 function AddTask (props){
   const [title,setTitle]= useState("");
   const [desc,setDesc] = useState("");
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault();
     if (!title.trim()) return;
     console.log("Form Submitted!");
@@ -12,11 +12,21 @@ function AddTask (props){
       description:desc,
       status:"To Do"
     };
-    console.log("Object:",newTask);
-    props.onAddTask(newTask);
-    setTitle("");
-    setDesc("");
+
+    try{
+    const response = await fetch("http://localhost:5000/api/tasks",{
+      method:"POST",
+      headers:{"Content-type":"application/json"},
+      body:JSON.stringify(newTask)
+    });
+
+    const data = await response.json();
+    props.onAddTask(data);
+  }catch(error)
+  {
+    console.log(error);
   }
+}
   return (
     <div>
       <h2>ADD TASK</h2>
