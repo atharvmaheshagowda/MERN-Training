@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 // bring express in Node.js
 const express = require("express")
 const cors=require("cors");
@@ -5,10 +7,16 @@ const cors=require("cors");
 // create express app using What we imported
 const app = express();
 
+const mongoose = require("mongoose")
 //use cors middleware to handle requests
 app.use(cors());
 app.use(express.json());
 
+mongoose.connect(process.env.MONGODB_URL)
+.then(() => {
+  console.log("MongoDB connected Successfully!!");
+}).catch((error) => console.log("MongoDB Failed",error.message)
+);
   const tasks = [
     {id:1,title: "Learn React", description: "Understanding Components", status: "In Progress"},
     {id:2,title: "Learn MongoDB", description: "Create a simple React app", status: "To Do"}, 

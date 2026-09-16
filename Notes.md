@@ -65,6 +65,8 @@ git remote add origin "link"
 git remote show origin
 git push -u origin master
 
-
+MONGO server
+user_name=atharvmaheshagowda06_db_user
+user_password=Mxg22OXlwZyRsRPK
 
 
