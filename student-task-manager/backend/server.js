@@ -29,10 +29,30 @@ app.get("/api/tasks/:id", (req, res) => {
   const id = Number(req.params.id);
   const task = tasks.find((task) => task.id === id);
   if(!task)
-  {return res.status(404).json({"not found"})};
+  {return res.status(404).json({message:"not found"})};
   res.json(task);
 })
 
+app.put("/api/tasks/:id", (req, res) => {
+  const id  = Number(req.params.id);
+  const task = tasks.find((task) => task.id === id);
+  if (!task){
+    return res.status(404).json({message:"Task Not Found"})
+  }
+  task.status = req.body.status;
+  res.json(task);
+})
+
+app.delete("/api/tasks/:id", (req, res) =>{
+  const id = Number(req.params.id);
+  const taskIndex = tasks.findIndex((task) => task.id === id)
+  if(taskIndex === -1)
+  {
+    return res.status(404).json({message:"Task Not Found"})
+  }
+  const deletedTask = tasks.splice(taskIndex,1);
+  res.json(deletedTask[0]); 
+})
 //Our API Route(for testing Backend)
 app.get("/", (req, res) => {
   res.send("Backend is Working!!")

@@ -1,9 +1,40 @@
 import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function TaskDetails(props) {
   const { id } = useParams();
-  const currentTasks = props.tasks || [];
-  const task = currentTasks.find((t) => t.id === Number(id));
+  const [task, setTask] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    // FIXED: Ensured the URL template literal is clean
+    fetch(`http://localhost:5000/api/tasks/${id}`)
+      .then((response) => {
+        if (!response.ok) { 
+          throw new Error("Task Not Found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setTask(data); 
+      })
+      .catch((error) => {
+        console.log(error);
+        setTask(null); 
+      })
+      .finally(() => {
+        setLoading(false); 
+      });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="task-details-container">
+        <h2>Loading Task Details...</h2>
+      </div>
+    );
+  }
 
   if (!task) {
     return (
@@ -68,4 +99,4 @@ function TaskDetails(props) {
   );
 }
 
-export default TaskDetails;
+export default TaskDetails;

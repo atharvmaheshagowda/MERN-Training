@@ -4,7 +4,7 @@ import Dashboard from './components/dashboard';
 import { Routes,Route } from 'react-router-dom';
 import Tasks from './components/Tasks';
 import TaskDetails from './components/TaskDetails';
-import "./projection.css"
+import "./App.css"
 import { useState,useEffect } from 'react';
 function App()
 {

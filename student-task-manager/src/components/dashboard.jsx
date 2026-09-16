@@ -4,36 +4,73 @@ import { useState } from "react";
 import AddTask from "./AddTask"; 
 
 function Dashboard(props) { 
-  function toggleTask(id) { 
-    props.setTasks((prevTasks) => 
-      prevTasks.map((task) => { 
-        if (task.id === id) { 
-          let nextStatus = "To Do";
-          if (task.status === "To Do" || task.status === "To do") nextStatus = "In Progress";
-          else if (task.status === "In Progress") nextStatus = "Completed";
-          else if (task.status === "Completed") nextStatus = "To Do";
-          
-          return { ...task, status: nextStatus }; 
-        } 
-        return task; 
-      }) 
-    ); 
+  async function toggleTask(id) { 
+    const currentTasks = props.tasks || [];
+    const targetTask = currentTasks.find(task => Number(task.id) === Number(id));
+    if (!targetTask) return;
+
+    const currentStatus = (targetTask.status || "To Do").toLowerCase();
+    let nextStatus = "To Do";
+
+    if (currentStatus === "to do") {
+      nextStatus = "In Progress";
+    } else if (currentStatus === "in progress") {
+      nextStatus = "Completed";
+    } else if (currentStatus === "completed") {
+      nextStatus = "To Do";
+    }
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ status: nextStatus })
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update task");
+      }
+
+      const updatedTask = await response.json(); 
+
+      props.setTasks((prevTasks) => 
+        prevTasks.map((task) => 
+          Number(task.id) === Number(id) ? updatedTask : task
+        )
+      );
+    } catch (error) {
+      console.warn("Backend server not synced:", error);
+    }
   } 
 
   function addTask(newTask) { 
-    // BUG FIX: Safely append to the previous state
     props.setTasks((prevTasks) => [...prevTasks, newTask]); 
   } 
 
-  function deleteTask(id) { 
-    // BUG FIX: Safely filter from the previous state
-    props.setTasks((prevTasks) => prevTasks.filter(t => t.id !== id)); 
+  async function deleteTask(id) {
+    try {
+      const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+        method: "DELETE"
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete task");
+      }
+
+      const deletedTask = await response.json();
+      props.setTasks((prevTasks) => 
+        prevTasks.filter((t) => Number(t.id) !== Number(deletedTask.id))
+      ); 
+    } catch (error) {
+      console.warn("Backend server not synced:", error);
+    }
   } 
 
-  // Guard against undefined props.tasks if the parent component fails to pass it initially
   const currentTasks = props.tasks || [];
   const totalTasks = currentTasks.length;
-  const completedTasks = currentTasks.filter(t => t.status === "Completed").length;
+  const completedTasks = currentTasks.filter(t => (t.status || "").toLowerCase() === "completed").length;
   const pendingTasks = totalTasks - completedTasks;
 
   return ( 
