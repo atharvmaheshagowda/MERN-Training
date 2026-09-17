@@ -8,7 +8,6 @@ function TaskDetails(props) {
 
   useEffect(() => {
     setLoading(true);
-    // FIXED: Ensured the URL template literal is clean
     fetch(`http://localhost:5000/api/tasks/${id}`)
       .then((response) => {
         if (!response.ok) { 

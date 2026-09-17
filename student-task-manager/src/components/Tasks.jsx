@@ -30,12 +30,12 @@ function Tasks(props) {
               <div key={task.id} className="task-grid-card">
                 <div className="task-grid-header">
                   <span className={`status-pill status-${statusKey}`}>{task.status}</span>
-                  <span className="task-id-tag">#{task.id}</span>
+                  <span className="task-id-tag">#{task._id}</span>
                 </div>
                 <h3>{task.title}</h3>
                 <p className="task-grid-desc">{task.description}</p>
                 <div className="task-grid-footer">
-                  <Link to={`/tasks/${task.id}`} className="view-detail-link">
+                  <Link to={`/tasks/${task._id}`} className="view-detail-link">
                     View Details →
                   </Link>
                 </div>
@@ -48,4 +48,4 @@ function Tasks(props) {
   );
 }
 
-export default Tasks;
+export default Tasks;

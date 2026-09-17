@@ -553,8 +553,7 @@ main > h2::after {
     margin: 0;
 }
 
-.task-card .task-info p,
-.task-card p:first-of-type:not(.status-pill) {
+.task-card .task-info p {
     max-width: 60ch;
     font-size: 0.95rem;
     font-weight: 500;
@@ -563,8 +562,7 @@ main > h2::after {
 }
 
 /* -------------------------------------------------- 10. HIGH-VISIBILITY STATUS PILLS */
-.status-pill,
-.task-card p:last-of-type {
+.status-pill {
     align-self: center;
     display: inline-flex;
     align-items: center;
@@ -586,8 +584,7 @@ main > h2::after {
 }
 
 /* Status Indicator Dot */
-.status-pill::before,
-.task-card p:last-of-type::before {
+.status-pill::before {
     content: "";
     display: inline-block;
     width: 8px;
@@ -595,11 +592,11 @@ main > h2::after {
     border-radius: 50%;
 }
 
-/* To Do Status (High-Contrast Vivid Blue) */
+/* To Do / Pending Status (High-Contrast Vivid Blue) */
 .status-pill,
 .status-pill.status-to-do,
 .status-pill.status-todo,
-.task-card p:last-of-type {
+.status-pill.status-pending {
     color: var(--todo-fg);
     background: var(--todo-bg);
     border: 2px solid var(--todo-border);
@@ -608,7 +605,7 @@ main > h2::after {
 .status-pill::before,
 .status-pill.status-to-do::before,
 .status-pill.status-todo::before,
-.task-card p:last-of-type::before {
+.status-pill.status-pending::before {
     background: var(--todo-dot);
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
 }
@@ -1100,8 +1097,7 @@ main > h2::after {
         row-gap: 14px;
     }
     .task-card .task-info { grid-column: 1 / -1; }
-    .status-pill,
-    .task-card p:last-of-type { grid-column: 1; justify-self: start; }
+    .status-pill { grid-column: 1; justify-self: start; }
 }
 
 @media (max-width: 760px) {
@@ -1129,8 +1125,7 @@ main > h2::after {
     }
     .task-card .task-info,
     .task-card h3 { grid-column: 1 / -1; }
-    .status-pill,
-    .task-card p:last-of-type { grid-column: 1 / -1; justify-self: start; }
+    .status-pill { grid-column: 1 / -1; justify-self: start; }
     
     .task-card .btn-toggle,
     .task-card button:nth-of-type(1) { grid-column: 1; width: 100%; }
