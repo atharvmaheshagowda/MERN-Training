@@ -4,9 +4,11 @@ import { useState } from "react";
 import AddTask from "./AddTask";
 
 function Dashboard(props) {
+  // Fallback to an empty array if props.tasks is undefined
+  const tasks = props.tasks || [];
+
   async function toggleTask(id) {
-    const currentTasks = props.tasks || [];
-    const targetTask = currentTasks.find(task => task._id === id);
+    const targetTask = tasks.find(task => task._id === id);
     if (!targetTask) return;
 
     const currentStatus = (targetTask.status || "To Do").toLowerCase();
@@ -59,24 +61,19 @@ function Dashboard(props) {
     }
   }
 
-  const currentTasks = props.tasks || [];
-  const totalTasks = currentTasks.length;
-  const completedTasks = currentTasks.filter(
-    (t) => (t.status || "").toLowerCase() === "completed"
-  ).length;
-  const pendingTasks = totalTasks - completedTasks;
-
   return (
     <main>
       <div className="stat-container">
-        <StatCard title={"Total Tasks"} value={totalTasks} />
-        <StatCard title={"Completed Tasks"} value={completedTasks} />
-        <StatCard title={"Pending Tasks"} value={pendingTasks} />
+        {/* Changed props.tasks to tasks to safely read length */}
+        <StatCard title="Total Tasks" value={tasks.length}/>
+        <StatCard title="Completed" value={tasks.filter((task) => task.status === "Completed").length}/>
+        <StatCard title="Pending" value={tasks.filter((task) => task.status === "Pending").length}/>
       </div>
       <AddTask onAddTask={addTask} />
       <h2>Recent Tasks</h2>
       <div className="task-container">
-        {currentTasks.map((task) => (
+        {/* Fixed: Changed currentTasks.map to tasks.map */}
+        {tasks.map((task) => (
           <TaskList
             key={task._id}
             id={task._id}

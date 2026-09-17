@@ -8,11 +8,7 @@ import "./App.css"
 import { useState,useEffect } from 'react';
 function App()
 {
-  const [tasks, setTasks] = useState([
-    { id: 1, title: "Learn React", description: "Understanding Components & State Management", status: "In Progress" },
-    { id: 2, title: "Learn MongoDB", description: "Create database schemas and connections", status: "To Do" },
-    { id: 3, title: "Deploy App", description: "Host the full stack MERN application", status: "Completed" }
-  ]);
+  const [tasks, setTasks] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:5000/api/tasks")
